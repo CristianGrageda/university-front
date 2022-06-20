@@ -1,18 +1,11 @@
 import React from "react";
 import { useFetch } from "../custom-hooks/useFetch";
-import { url } from "../routes/routes";
+import { getHeader, url } from "../routes/routes";
 import { Link } from "react-router-dom";
 
 export const UniMainTeacher = () => {
 
-    const methodFetch = { 
-        method: 'GET', 
-        headers: new Headers({
-            'Authorization': 'Bearer ' + sessionStorage.getItem('tokenAuth'), 
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': 'http://localhost:3000'
-        })
-    }
+    const methodFetch = getHeader();
     
     const { data } = useFetch(url.teacher.list, methodFetch);
     console.log(data);
