@@ -6,6 +6,7 @@ export const UniHome = () => {
         <>
             <h1>Uni home</h1>
             <Link to="/teacher" >Lista de Profesores</Link>
+            <Link to="/matter" >Lista de Materias</Link>
         </>
     );
 }

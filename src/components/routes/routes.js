@@ -8,5 +8,8 @@ export const url = {
     home: path + "/home",
     teacher: {
         list: path + "/teacher"
+    },
+    matter: {
+        list: path + "/matter"
     }
 }
