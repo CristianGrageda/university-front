@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 
-export const useFetch = (url) => {
+export const useFetch = (url, method) => {
     /**
      * Custom Hook para peticiones API
      * @param data: Almacena los resultados de la peticion
@@ -13,16 +13,23 @@ export const useFetch = (url) => {
     // Ejecutar solo cuando cambia la consulta (url)
     useEffect(()=>{
         // Actualizamos el loading antes de cada peticion
-        setState({data:null, loading:true, error: null});
+        setState({ data:null, loading:true, error: null });
 
         // Realizamos la peticion
-        fetch(url)
+        fetch(url, method)
             .then( res => res.json())
             .then( data => {
                 setState({
                     loading: false,
                     error: null,
                     data
+                })
+            })
+            .catch( error => {
+                setState({
+                    data: null,
+                    loading: false,
+                    error
                 })
             })
         ;

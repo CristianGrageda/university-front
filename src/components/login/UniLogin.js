@@ -1,5 +1,7 @@
 import React from "react";
 import { useForm } from "../custom-hooks/useForm";
+import { url } from "../routes/routes";
+import { useNavigate } from "react-router-dom";
 
 export const UniLogin = () => {
 
@@ -10,20 +12,28 @@ export const UniLogin = () => {
 
     const [ form, handleInputChange ] = useForm(initForm);
 
+    const navigate = useNavigate();
+    
     const { username, password } = form;
+    
+    const methodFetch = {
+        method: 'POST',
+        body: JSON.stringify(form),
+        headers: new Headers({
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'http://localhost:3000'
+        })
+    }
 
     const handleForm = (e) => {
         e.preventDefault();
-        console.log("form: ", form);
-        fetch("http://localhost:8080/auth/login", {
-            method: 'POST',
-            body: JSON.stringify(form),
-            headers:{
-              'Content-Type': 'application/json'
-            }
-          }).then(res => res.json())
-          .catch(error => console.error('Error:', error))
-          .then(response => console.log('Success:', response));
+        fetch( url.auth.login, methodFetch).then(res => res.json())
+            .then(response => {
+                console.log('Success:', response);
+                if(response.token) sessionStorage.setItem('tokenAuth', response.token);
+                navigate("/home");
+            })
+            .catch(error => console.error('Error:', error));
     }
 
     return(
