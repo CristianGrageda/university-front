@@ -16,9 +16,21 @@ export const url = {
     }
 }
 
-export const getHeader = () => {
+export const methodGet = () => {
     return { 
         method: 'GET', 
+        headers: new Headers({
+            'Authorization': 'Bearer ' + sessionStorage.getItem('tokenAuth'), 
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'http://localhost:3000'
+        })
+    }
+}
+
+export const methodPost = ( data ) => {
+    return {
+        method: 'POST',
+        body: JSON.stringify(data),
         headers: new Headers({
             'Authorization': 'Bearer ' + sessionStorage.getItem('tokenAuth'), 
             'Content-Type': 'application/json',

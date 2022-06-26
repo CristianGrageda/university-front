@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "../custom-hooks/useForm";
-import { url } from "../routes/routes";
+import { methodPost, url } from "../routes/routes";
 import { useNavigate, Link } from "react-router-dom";
 
 export const UniAddTeacher = () => {
@@ -17,18 +17,8 @@ export const UniAddTeacher = () => {
 
     const navigate = useNavigate();
 
-    const methodFetch = {
-        method: 'POST',
-        body: JSON.stringify(form),
-        headers: new Headers({
-            'Authorization': 'Bearer ' + sessionStorage.getItem('tokenAuth'), 
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': 'http://localhost:3000'
-        })
-    }
-
     const sendTeacher = () => {
-        fetch(url.teacher.add, methodFetch)
+        fetch(url.teacher.add, methodPost(form))
             .then( () => {
                 console.log("Exito al agregar!")
             })

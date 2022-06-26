@@ -1,13 +1,11 @@
 import React from "react";
 import { useFetch } from "../custom-hooks/useFetch";
-import { getHeader, url } from "../routes/routes";
+import { methodGet, url } from "../routes/routes";
 import { Link } from "react-router-dom";
 
 export const UniMainMatter = () => {
-
-    const methodFetch = getHeader();
     
-    const { data } = useFetch(url.matter.list, methodFetch);
+    const { data } = useFetch(url.matter.list, methodGet());
     console.log(data);
 
     return(
