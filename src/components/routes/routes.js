@@ -7,10 +7,12 @@ export const url = {
     },
     home: path + "/home",
     teacher: {
-        list: path + "/teacher"
+        list: path + "/teacher/",
+        add: path + "/teacher/"
     },
     matter: {
-        list: path + "/matter"
+        list: path + "/matter/",
+        add: path + "/matter/"
     }
 }
 
