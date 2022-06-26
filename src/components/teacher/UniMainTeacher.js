@@ -1,12 +1,19 @@
 import React from "react";
 import { useFetch } from "../custom-hooks/useFetch";
-import { methodGet, url } from "../routes/routes";
+import { methodGet, methodDelete, url } from "../routes/routes";
 import { Link } from "react-router-dom";
 
 export const UniMainTeacher = () => {
     
     const { data } = useFetch(url.teacher.list, methodGet());
     console.log(data);
+
+    const deleteItem = ( item ) => {
+        fetch(url.teacher.delete, methodDelete(item))
+            .then( () => console.log("Operacion exitosa!") )
+            .catch( error => console.error("Ha ocurrido un error:", error) )
+        ;
+    }
 
     return(
         <>
@@ -30,6 +37,8 @@ export const UniMainTeacher = () => {
                                     <td>{ item.surname }</td>
                                     <td>{ item.dni }</td>
                                     <td>{ item.active ? 'Activo' : 'Inactivo' }</td>
+                                    <td><button>Modificar</button></td>
+                                    <td><button onClick={ () => deleteItem(item) } >Eliminar</button></td>
                                 </tr>
                             )
                         }
