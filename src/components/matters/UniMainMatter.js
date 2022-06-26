@@ -13,6 +13,7 @@ export const UniMainMatter = () => {
     return(
         <>
             <h1>Lista de Materias</h1>
+            <Link to="/addMatter"><button>Agregar Materia</button></Link>
             {data ?    
                 <table border="1">
                     <thead>

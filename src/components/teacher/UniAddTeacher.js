@@ -1,8 +1,7 @@
 import React from "react";
 import { useForm } from "../custom-hooks/useForm";
 import { url } from "../routes/routes";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export const UniAddTeacher = () => {
     
