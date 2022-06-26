@@ -5,8 +5,8 @@ export const UniHome = () => {
     return(
         <>
             <h1>Uni home</h1>
-            <Link to="/teacher" >Lista de Profesores</Link>
-            <Link to="/matter" >Lista de Materias</Link>
+            <Link to="/teacher" ><button>Lista de Profesores</button></Link>
+            <Link to="/matter" ><button>Lista de Materias</button></Link>
         </>
     );
 }

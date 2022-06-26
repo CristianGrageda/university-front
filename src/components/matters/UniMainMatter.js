@@ -37,7 +37,7 @@ export const UniMainMatter = () => {
             : 
                 <span>No se pudo cargar los datos</span>
             }
-            <Link to="/home">Volver</Link>
+            <Link to="/home"><button>Volver</button></Link>
         </>
     );
 }
